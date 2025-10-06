@@ -1,5 +1,5 @@
 package com.example.budget
-
+import androidx.compose.ui.text.input.KeyboardOptions
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -196,6 +196,6 @@ private fun OutlinedNumberField(value: String, onValueChange: (String) -> Unit, 
 			onValueChange(filtered)
 		},
 		label = { Text(label) },
-		keyboardOptions = androidx.compose.ui.text.input.KeyboardOptions(keyboardType = KeyboardType.Number)
+		keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
 	)
 }
