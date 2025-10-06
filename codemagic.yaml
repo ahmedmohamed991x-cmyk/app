@@ -10,7 +10,16 @@ workflows:
         - ~/.gradle/caches
         - ~/.gradle/wrapper
     scripts:
-      - name: Ensure Gradle wrapper is executable
+      - name: Install Gradle via SDKMAN
+        script: |
+          curl -s "https://get.sdkman.io" | bash
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          sdk install gradle 8.7
+      - name: Generate Gradle wrapper (if missing)
+        script: |
+          source "$HOME/.sdkman/bin/sdkman-init.sh"
+          gradle wrapper --gradle-version 8.7
+      - name: Make gradlew executable
         script: chmod +x ./gradlew
       - name: Build debug APK
         script: ./gradlew assembleDebug
